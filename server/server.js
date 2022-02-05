@@ -8,7 +8,7 @@ const server = http.createServer(app);
 connectDB();
 
 const port = 3003;
-const hostname = 'localhost';
+const hostname = '0.0.0.0';
 
 server.listen(port, hostname, port, () => {
     console.log(`RFID Tracking Server Up and Running at http://${hostname}:${port}`);
