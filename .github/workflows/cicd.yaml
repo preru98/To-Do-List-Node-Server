@@ -33,3 +33,25 @@ jobs:
           docker push $ECR_REGISTRY/$API_ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$API_ECR_REPOSITORY:$IMAGE_TAG"
 
+       - name: create a temporary docker-compose file with new image IDs
+        run: |
+          envsubst < docker-compose.yml > docker-compose.temp.yml
+          cat docker-compose.temp.yml
+        env:
+          API_IMAGE: ${{ steps.build-api-image.outputs.image }}
+
+      - name: Zip an artifact to deploy to elastic beanstalk
+        run: |
+          mkdir -p deployment
+          cp docker-compose.temp.yml deployment/docker-compose.yml
+          zip -r -j deployment.zip deployment/docker-compose.yml
+          cat deployment/docker-compose.yml
+
+      - name: Deploy to Elastic Beanstalk
+        uses: hmanzur/actions-aws-eb@v1.0.0
+        with:
+          command: 'deploy ${{ env.ENVIRONMENT_NAME }}'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ap-south-1"
