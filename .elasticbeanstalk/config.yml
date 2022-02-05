@@ -1,0 +1,20 @@
+branch-defaults:
+  default:
+    environment: Listonsserver-env
+    group_suffix: null
+global:
+  application_name: Listons-Server
+  branch: null
+  default_ec2_keyname: listonskeypair
+  default_platform: Docker running on 64bit Amazon Linux 2
+  default_region: ap-south-1
+  include_git_submodules: false
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: null
+  workspace_type: Application
+deploy:
+  artifact: deployment.zip
