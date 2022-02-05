@@ -1,0 +1,23 @@
+{
+  "name": "liston",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./server/server",
+    "test": "jest --testEnvironment=node --runInBand ./tests"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.5",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "jest": "^27.4.7",
+    "lodash": "^4.17.21",
+    "mongodb-memory-server": "^8.2.0",
+    "mongoose": "^5.10.15",
+    "morgan": "~1.9.0"
+  }
+}
