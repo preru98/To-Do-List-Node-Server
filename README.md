@@ -1,6 +1,6 @@
 # Introduction
 
-## Check out the currently running version - http://listons-app.s3-website.ap-south-1.amazonaws.com/s
+## Check out the currently running version - http://listons-app.s3-website.ap-south-1.amazonaws.com/#
 
 Listons is a simple application for productive people to trace their action items. This application let user create a category(List), and then create items in it. Items represents task Actions, which have further properties like, priority, status, description.
 
@@ -42,7 +42,7 @@ The backend runs in a docker container on an EC2 instance running Amazon Ubuntu,
 1. Github actions works as the CI/CD pipelines. Specified steps in my workflows directory in the source code, to instantiate on every code push.
 2. It exceutes the steps mentioned in the cicd.yml file as jobs. 
 3. It automatically builds the backend docker images, and ships it to the AWS ECR to load the new docker image. 
-4. ECR then ships this latest image to AWS EBS to build and run this on AWS EC2 unbuntu instance. 
+4. Github actions then ships this latest image stored in ECR to AWS EBS to build and run this on AWS EC2 unbuntu instance. 
 5. There are also no plaintext AWS keys anywhere in the code, all of them being stored in github actions secrets.
 6. Both the latest running, and pushed build is secured with this flow to ensure at any point, application does not stops working.
 7. If the pushed build fails, the application will keep running with the last working build.
